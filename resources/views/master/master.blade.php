@@ -133,7 +133,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{route('adminPanel')}}" class="nav-link">خانه</a>
+                <a href="{{route('panel')}}" class="nav-link">خانه</a>
             </li>
         </ul>
 
@@ -185,128 +185,7 @@
                 </div>
 
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview">
-                            <a href="{{route('adminPanel')}}"
-                               class="nav-link {{ request()->is('AdminPanel/adminPanel') ? 'active':''   }} ">
-                                <i class="nav-icon fa fa-dashboard "></i>
-                                <p>داشبورد </p>
-                            </a>
-                        </li>
-                        @can('admin')
-
-
-                        <li class="nav-item">
-                            <a href="{{route('needy.index')}}"
-                               class="nav-link {{request()->is('admin/needy*') ? 'active':''  }}">
-                                <i class="fa fa-list-alt nav-icon"></i>
-                                <p>لیست نیازمندان</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('donate.index')}}"
-                               class="nav-link {{request()->is('admin/donate*') ? 'active':''  }}">
-                                <i class="fa fa-list nav-icon"></i>
-                                <p>لیست خیرین</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('resource.index')}}"
-                               class="nav-link {{request()->is('admin/resource') ? 'active':''  }}">
-                                <i class="fa fa-money nav-icon"></i>
-                                <p>لیست دارایی</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('send.create')}}"
-                               class="nav-link {{request()->is('admin/send/create') ? 'active':''  }}">
-                                <i class="fa fa-arrow-circle-o-up nav-icon"></i>
-                                <p>ثبت اهدا</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('send.index')}}"
-                               class="nav-link {{request()->is('admin/send') ? 'active':''  }}">
-                                <i class="fa fa-ravelry nav-icon"></i>
-                                <p>لیست اهدا</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('option.index')}}"
-                               class="nav-link {{request()->is('admin/option') ? 'active':''  }}">
-                                <i class="fa fa-cog nav-icon"></i>
-                                <p>تنظیمات </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('option.create')}}"
-                               class="nav-link {{request()->is('admin/option/create') ? 'active':''  }}">
-                                <i class="fa fa-rss nav-icon"></i>
-                                <p>اطلاع رسانی</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('plan.index')}}"
-                               class="nav-link {{request()->is('admin/plan/') ? 'active':''  }}">
-                                <i class="fa fa-renren nav-icon"></i>
-                                <p>برنامه ها</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('user.index')}}"
-                               class="nav-link {{request()->is('admin/users/') ? 'active':''  }}">
-                                <i class="fa fa-user nav-icon"></i>
-                                <p>اعضا</p>
-                            </a>
-                        </li>
-                            <li class="nav-item">
-                                <a href="{{route('storages.index')}}"
-                                   class="nav-link {{request()->is('admin/storage/') ? 'active':''  }}">
-                                    <i class="fa fa-paperclip nav-icon"></i>
-                                    <p>انبار</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('blog.index')}}"
-                                   class="nav-link {{request()->is('admin/blog/') ? 'active':''  }}">
-                                    <i class="fa fa-paper-plane nav-icon"></i>
-                                    <p>بلاگ</p>
-                                </a>
-                            </li>
-                        @endcan
-                        @can('executer')
-                        <li class="nav-item">
-                            <a href="{{route('ExePlan.index')}}"
-                               class="nav-link {{request()->is('executer/ExePlan/') ? 'active':''  }}">
-                                <i class="fa fa-renren nav-icon"></i>
-                                <p>برنامه ها
-                                    @can('admin')
-                                    (مجری)
-                                    @endcan
-                                </p>
-                            </a>
-                        </li>
-                        @endcan
-                        @can('user')
-                        <li class="nav-item">
-                            <a href="{{route('userplan.index')}}"
-                               class="nav-link {{request()->is('user/UserPlan/') ? 'active':''  }}">
-                                <i class="fa fa-renren nav-icon"></i>
-                                <p>برنامه ها
-                                    @can('admin')
-                                    (اعضا)
-                                    @endcan
-                                </p>
-                            </a>
-                        </li>
-                        @endcan
-                    </ul>
-
-                </nav>
+                @include('master.sidebar')
                 <!-- /.sidebar-menu -->
             </div>
         </div>
@@ -390,7 +269,7 @@
 
 </script>
 <script src="{{asset('js/app.js')}}"></script>
-@include('sweet::alert')
 
+@include('sweetalert::alert')
 </body>
 </html>

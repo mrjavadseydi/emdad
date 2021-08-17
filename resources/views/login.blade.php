@@ -116,6 +116,6 @@
 <script src="{{asset('loginAsset/vendor/countdowntime/countdowntime.js')}}"></script>
 <!--===============================================================================================-->
 <script src="{{asset('loginAsset/js/main.js')}}"></script>
-
+@include('sweetalert::alert')
 </body>
 </html>
