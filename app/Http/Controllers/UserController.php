@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateUserRequest;
+use App\Jobs\SendPasswordSms;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -34,9 +37,13 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
-        //
+        SendPasswordSms::dispatch($request->mobile,$request->name,$request->password);
+        $request->password = bcrypt($request->password);
+        $user = User::create($request->all());
+        Alert::toast('ثبت نام کاربر با موفقیت انجام شد', 'success');
+        return redirect(route('users.index'));
     }
 
     /**
