@@ -19,6 +19,13 @@ class CreateOfficesTable extends Migration
             $table->foreignId('city_id')->constrained('cities')->onDelete('cascade');
             $table->foreignId('state_id')->constrained('states')->onDelete('cascade');
             $table->string('name');
+            $table->string('code');
+            $table->text('address');
+            $table->string('phone');
+            $table->text('address_office');
+            $table->string('phone_office');
+            $table->string('boss_name');
+            $table->string('employment_name');
             $table->timestamps();
         });
     }
