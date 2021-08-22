@@ -40,6 +40,14 @@
     <!----data table----->
     <link rel="stylesheet" type="text/css" href="{{asset('plugin/datatables.css')}}"/>
     <style>
+        .dt-buttons {
+            float: left;
+            padding: 10px;
+        }
+
+        .dt-buttons button {
+            margin: 3px;
+        }
         #akbari{
             position: fixed;
             background: white;

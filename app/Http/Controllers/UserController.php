@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('panel.user.create');
     }
 
     /**
@@ -81,6 +81,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::whereId($id)->delete();
     }
 }

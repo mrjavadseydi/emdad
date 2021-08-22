@@ -13,16 +13,6 @@
     </div>
 @endsection
 @section('content')
-    <style>
-        .dt-buttons {
-            float: left;
-            padding: 10px;
-        }
-
-        .dt-buttons button {
-            margin: 3px;
-        }
-    </style>
     <div class="row">
         <div class="col-md-12">
             <div class="card card-primary card-outline">
@@ -52,6 +42,7 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{$loop->iteration}}.</td>
+
                                 <td>{{$user->name}}</td>
                                 <td>
                                     {{$user->fathername}}
