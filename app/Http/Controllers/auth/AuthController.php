@@ -11,7 +11,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class AuthController extends Controller
 {
     public function login(Request  $request){
-        $user = User::where('email',$request->email)->first();
+        $user = User::where('national_id',$request->national_id)->first();
         if($user && \Hash::check($request->password, $user->password)){
             \Auth::login($user,(isset($request->remember)));
             return  redirect(route('panel'));

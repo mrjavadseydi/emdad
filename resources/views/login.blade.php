@@ -54,10 +54,10 @@
                                     </span>
                 @enderror
 
-                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                    <input class="input100" type="email" name="email">
+                <div class="wrap-input100 validate-input" data-validate = "کدملی صحیح وارد نشده">
+                    <input class="input100" type="text" name="national_id">
                     <span class="focus-input100"></span>
-                    <span class="label-input100">ایمیل</span>
+                    <span class="label-input100">کدملی</span>
                 </div>
 
                 @csrf
