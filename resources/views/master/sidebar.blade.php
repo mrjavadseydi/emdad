@@ -11,6 +11,14 @@
                 <p>داشبورد </p>
             </a>
         </li>
+        <li class="nav-item has-treeview">
+            <a href="{{route('users.index')}}"
+
+               class="nav-link {{ request()->is('panel/users/') ? 'active':''   }} ">
+                <i class="nav-icon fa fa-user "></i>
+                <p>کاربران </p>
+            </a>
+        </li>
     </ul>
 
 </nav>
