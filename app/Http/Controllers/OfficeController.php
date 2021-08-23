@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserRequest;
-use App\Jobs\SendPasswordSms;
-use App\Models\User;
+use App\Models\Office;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 
-class UserController extends Controller
+class OfficeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('panel.user.index',compact('users'));
+        $offices = Office::all();
+        return  view("panel.office.index",compact('offices'));
     }
 
     /**
@@ -28,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('panel.user.create');
+        //
     }
 
     /**
@@ -37,15 +34,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateUserRequest $request)
+    public function store(Request $request)
     {
-        if($request->user_type!="مددجو"){
-            SendPasswordSms::dispatch($request->mobile,$request->name,$request->password);
-        }
-        $request->password = bcrypt($request->password);
-        $user = User::create($request->all());
-        Alert::toast('ثبت نام کاربر با موفقیت انجام شد', 'success');
-        return redirect(route('users.index'));
+        //
     }
 
     /**
@@ -90,6 +81,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::whereId($id)->delete();
+        //
     }
 }

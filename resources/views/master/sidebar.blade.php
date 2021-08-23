@@ -14,9 +14,17 @@
         <li class="nav-item has-treeview">
             <a href="{{route('users.index')}}"
 
-               class="nav-link {{ request()->is('panel/users/') ? 'active':''   }} ">
+               class="nav-link {{ request()->is('panel/users') ? 'active':''   }} ">
                 <i class="nav-icon fa fa-user "></i>
                 <p>کاربران </p>
+            </a>
+        </li>
+        <li class="nav-item has-treeview">
+            <a href="{{route('office.index')}}"
+
+               class="nav-link {{ request()->is('panel/office') ? 'active':''   }} ">
+                <i class="nav-icon fa fa-university "></i>
+                <p>ادارات </p>
             </a>
         </li>
     </ul>
