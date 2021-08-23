@@ -57,14 +57,14 @@
                                     {{$office->boss_name}}
                                 </td>
                                 <td>
-                                    {{$user->employment_name}}
+                                    {{$office->employment_name}}
                                 </td>
                                 <td>
 
-                                    <a class="btn btn-sm btn-primary" href="{{route('users.show',$user->id)}}">
+                                    <a class="btn btn-sm btn-primary" href="{{route('office.show',$office->id)}}">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <button type="button" class="btn btn-sm btn-danger trashbtn" data-id="{{$user->id}}">
+                                    <button type="button" class="btn btn-sm btn-danger trashbtn" data-id="{{$office->id}}">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </td>

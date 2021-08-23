@@ -19,3 +19,6 @@ Route::get('/logout',function (){
     Auth::logout();
     return redirect()->route('home');
 })->name('logout');
+Route::post("/province",[\App\Http\Controllers\PlaceController::class,'province'])->name('province');
+Route::post('/state',[\App\Http\Controllers\PlaceController::class,'state'])->name('state');
+Route::post('/city',[\App\Http\Controllers\PlaceController::class,'city'])->name('city');

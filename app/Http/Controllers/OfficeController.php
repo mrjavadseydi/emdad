@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateOfficeRequest;
 use App\Models\Office;
+use App\Models\Province;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class OfficeController extends Controller
 {
@@ -25,7 +28,8 @@ class OfficeController extends Controller
      */
     public function create()
     {
-        //
+        $provines = Province::all();
+        return view('panel.office.create',compact('provines'));
     }
 
     /**
@@ -34,9 +38,11 @@ class OfficeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateOfficeRequest $request)
     {
-        //
+        Office::create($request->validated());
+        Alert::toast('ثبت اداره با موفقیت انجام شد', 'success');
+        return redirect(route('office.index'));
     }
 
     /**
@@ -45,9 +51,10 @@ class OfficeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Office $office)
     {
-        //
+
+        return view('panel.office.show',compact('office'));
     }
 
     /**
@@ -81,6 +88,6 @@ class OfficeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Office::whereId($id)->delete();
     }
 }

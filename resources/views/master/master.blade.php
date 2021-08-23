@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script>window.Laravel = {csrfToken: '{{ csrf_token() }}'}</script>
     <div name="destroy" content="{{ csrf_token() }}"></div>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -266,7 +267,7 @@
 <script src="{{asset('AdminAsset/')}}/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('AdminAsset/')}}/dist/js/adminlte.js"></script>
-
+<script src="{{asset('js/app.js')}}"></script>
 @yield('script')
 <script>
     $(document).ready(function () {
@@ -276,7 +277,7 @@
     });
 
 </script>
-<script src="{{asset('js/app.js')}}"></script>
+
 
 @include('sweetalert::alert')
 </body>
