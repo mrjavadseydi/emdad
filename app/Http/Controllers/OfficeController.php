@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateOfficeRequest;
 use App\Models\Office;
 use App\Models\Province;
+use App\Models\User;
+use App\Models\UserOffice;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -89,5 +91,33 @@ class OfficeController extends Controller
     public function destroy($id)
     {
         Office::whereId($id)->delete();
+    }
+
+    /**
+     * Add user to speacial office
+     * @param int $id => office id
+     *
+     */
+    public function showOfficeUsers($id){
+        $office = Office::findOrFail($id);
+        $users = User::whereNotIn('id',UserOffice::get('user_id'))->get();
+        return view('panel.office.users',compact('office','users'));
+    }
+
+    /**
+     * save office users
+     * @param Request $request
+     * @param $id
+     */
+    public function saveOfficeUsers(Request $request , $id){
+        UserOffice::where('office_id',$id)->delete();
+        foreach ($request->users as $user ){
+            UserOffice::create([
+                'office_id'=>$id,
+                'user_id'=>$user
+            ]);
+        }
+        Alert::toast('ثبت کاربران اداره با موفقیت انجام شد', 'success');
+        return back();
     }
 }

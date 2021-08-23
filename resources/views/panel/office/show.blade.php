@@ -8,7 +8,11 @@
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="{{route('panel')}}">خانه</a></li>
-                <li class="breadcrumb-item ">ادارات</li>
+                <li class="breadcrumb-item ">
+                    <a href="{{route('office.index')}}">
+                    ادارات
+                    </a>
+                </li>
                 <li class="breadcrumb-item active">   اداره {{$office->name}}
                 </li>
             </ol>

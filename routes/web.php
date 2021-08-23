@@ -22,3 +22,24 @@ Route::get('/logout',function (){
 Route::post("/province",[\App\Http\Controllers\PlaceController::class,'province'])->name('province');
 Route::post('/state',[\App\Http\Controllers\PlaceController::class,'state'])->name('state');
 Route::post('/city',[\App\Http\Controllers\PlaceController::class,'city'])->name('city');
+
+Route::get('create',function (){
+    $faker =\Faker\Factory::create();
+    $user = ['مددجو','کارمند شرکت','کارمند امداد'];
+    for($i=0;$i<100;$i++){
+        \App\Models\User::create([
+            'name'=>$faker->name(),
+            'fathername'=>$faker->name(),
+            'birth'=>$faker->date(),
+            'degree'=>$faker->word,
+            'user_type'=>$user[rand(0,2)],
+            'address'=>$faker->sentence,
+            'distance'=>$faker->numberBetween(1,100),
+            'mobile'=>$faker->phoneNumber,
+            'phone'=>$faker->phoneNumber,
+            'national_id'=>$faker->numberBetween(111111111,99999999999),
+            'role'=>"user",
+            "password"=>bcrypt($faker->password)
+        ]);
+    }
+});

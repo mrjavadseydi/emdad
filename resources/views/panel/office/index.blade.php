@@ -64,6 +64,10 @@
                                     <a class="btn btn-sm btn-primary" href="{{route('office.show',$office->id)}}">
                                         <i class="fa fa-eye"></i>
                                     </a>
+
+                                    <a class="btn btn-sm btn-success" href="{{route('office.users',$office->id)}}">
+                                        <i class="fa fa-user"></i>
+                                    </a>
                                     <button type="button" class="btn btn-sm btn-danger trashbtn" data-id="{{$office->id}}">
                                         <i class="fa fa-trash"></i>
                                     </button>

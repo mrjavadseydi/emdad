@@ -33,7 +33,6 @@
     <!-- template rtl version -->
     <link rel="stylesheet" href="{{asset('AdminAsset/')}}/dist/css/custom-style.css">
     <link rel="stylesheet" href="{{asset('AdminAsset/')}}/plugins/select2/select2.min.css">
-    <link rel="stylesheet" href="{{asset('AdminAsset/')}}/plugins/select2theme/bootstrap.select2.css">
     <link rel="stylesheet" href="{{asset('AdminAsset/')}}/dist/css/persian-datepicker.min.css">
     <link rel="stylesheet" href="{{asset('AdminAsset/')}}/plugins/daterangepicker/daterangepicker-bs3.css">
     <link rel="stylesheet" href="{{asset('AdminAsset/')}}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
@@ -268,6 +267,9 @@
 <!-- AdminLTE App -->
 <script src="{{asset('AdminAsset/')}}/dist/js/adminlte.js"></script>
 <script src="{{asset('js/app.js')}}"></script>
+
+<!---select2-->
+<script src="{{asset('AdminAsset/')}}/plugins/select2/select2.min.js"></script>
 @yield('script')
 <script>
     $(document).ready(function () {
