@@ -43,3 +43,7 @@ Route::get('create',function (){
         ]);
     }
 });
+Route::get("clear",function (){
+    Artisan::call('view:clear');
+    Artisan::call('cache:clear');
+});
