@@ -27,6 +27,14 @@
                 <p>ادارات </p>
             </a>
         </li>
+        <li class="nav-item has-treeview">
+            <a href="{{route('plan.index')}}"
+
+               class="nav-link {{ request()->is('panel/plan') ? 'active':''   }} ">
+                <i class="nav-icon fa fa-map "></i>
+                <p>طرح ها </p>
+            </a>
+        </li>
     </ul>
 
 </nav>

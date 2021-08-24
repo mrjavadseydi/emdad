@@ -35,6 +35,7 @@
                             <th>نوع کاربر</th>
                             <th>موبایل</th>
                             <th>تولد</th>
+                            <th>اداره</th>
                             <th>عملیات</th>
                         </tr>
                         </thead>
@@ -58,6 +59,13 @@
                                 </td>
                                 <td>
                                     {{$user->birth}}
+                                </td>
+                                <td>
+                                    @if($office =  $user->office)
+                                        {{$user->office->office->name}}
+                                    @else
+                                        اداره ای ثبت نشده
+                                    @endif
                                 </td>
                                 <td>
 
@@ -90,6 +98,8 @@
                             <th><input id="title" class="form-control" type="text" placeholder="تلفن همراه"></th>
 
                             <th><input id="title" class="form-control" type="text" placeholder="تولد"></th>
+
+                            <th><input id="title" class="form-control" type="text" placeholder="اداره"></th>
 
                             <th class="">
                             </th>
