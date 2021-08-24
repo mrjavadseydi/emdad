@@ -2,12 +2,12 @@
 @section('position')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">کاربران</h1>
+            <h1 class="m-0 text-dark">طرح ها</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="{{route('panel')}}">خانه</a></li>
-                <li class="breadcrumb-item active">کاربران </li>
+                <li class="breadcrumb-item active">طرح ها </li>
             </ol>
         </div><!-- /.col -->
     </div>
@@ -17,10 +17,10 @@
         <div class="col-md-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title d-inline">لیست کاربران
+                    <h3 class="card-title d-inline">لیست طرح ها
                     </h3>
                     <a href="{{route('users.create')}}" class="btn btn-sm btn-primary d-inlie" style="float: left">
-                        ایجاد کاربر جدید
+                        ایجاد طرح جدید
                     </a>
                 </div>
                 <!-- /.card-header -->
