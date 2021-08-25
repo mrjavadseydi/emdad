@@ -44,9 +44,8 @@
                                 <label>
                                     مجری
                                 </label>
-                                <select class="form-control" name="executer_id">
+                                <select class="form-control" name="executor_id">
                                     @foreach($executers as $executer)
-
                                         <option value="{{$executer->id}}">
                                             {{$executer->name}}
                                         </option>
@@ -137,7 +136,7 @@
                                     تاریخ ثبت
                                 </label>
 
-                                <input type="text" name="text" class="form-control normal-example" placeholder="*******"
+                                <input type="text" name="date" class="form-control normal-example" placeholder="*******"
                                        value="{{Request()->old('date')}}">
                             </div>
                             <div class="col-md-4">
@@ -251,7 +250,7 @@
         </div>
         <div class="clone2">
             <div class="row input-group p-1">
-                <div class="col-md-6">
+                <div class="col-md-4">
 
                     <label>
                         بخش مربوطه:
@@ -267,11 +266,22 @@
 
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <label>
                         توضیحات
                     </label>
                     <input type="text" name="metaValue[]" class="form-control" placeholder="توضیحات">
+                </div>
+                <div class="col-md-3">
+                    <label>
+                        وضعیت استعلام:
+                    </label>
+                    <select class="form-control" name="metaActive[]">
+                        <option value="true">تایید شده</option>
+                        <option value="false"> عدم تایید</option>
+                    </select>
+
+
                 </div>
             </div>
         </div>

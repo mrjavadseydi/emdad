@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePlanRequest;
 use App\Models\Plan;
+use App\Models\PlanFund;
+use App\Models\PlanMeta;
+use App\Models\Skill;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PlanController extends Controller
 {
@@ -37,9 +42,35 @@ class PlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePlanRequest $request)
     {
-        //
+        $plan = Plan::create($request->validated());
+        PlanFund::create([
+            'executor_id'=>$request->executor_id,
+            'plan_id'=>$plan->id,
+            'executer_fund'=>$request->executer_fund,
+            'summery'=>$request->summery,
+            'fund'=>$request->fund,
+            'executer_summery'=>$request->executer_summery,
+        ]);
+        foreach ($request->skillType as $key => $value){
+            Skill::create([
+                'executor_id'=>$request->executor_id,
+                'type'=>$value,
+                'value'=>$request->skillValue[$key]
+            ]);
+        }
+        foreach ($request->metaType as $key =>$value){
+            PlanMeta::create([
+                'executor_id'=>$request->executor_id,
+                'plan_id'=>$plan->id,
+                'type'=>$value,
+                'value'=>$request->metaValue[$key],
+                'active'=>($request->metaActive[$key]==true)
+            ]);
+        }
+        Alert::toast('ثبت طرح با موفقیت انجام شد', 'success');
+        return redirect(route('plan.index'));
     }
 
     /**
