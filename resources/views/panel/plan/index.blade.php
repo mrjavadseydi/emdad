@@ -19,7 +19,7 @@
                 <div class="card-header">
                     <h3 class="card-title d-inline">لیست طرح ها
                     </h3>
-                    <a href="{{route('users.create')}}" class="btn btn-sm btn-primary d-inlie" style="float: left">
+                    <a href="{{route('plan.create')}}" class="btn btn-sm btn-primary d-inlie" style="float: left">
                         ایجاد طرح جدید
                     </a>
                 </div>
@@ -121,7 +121,7 @@
         </div>
     </div>
     <!-- /.col -->
-    </div>
+
 @endsection
 @section('script')
     <script type="text/javascript" src="{{asset('plugin/datatables.js')}}"></script>
