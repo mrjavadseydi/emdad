@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
@@ -25,7 +26,9 @@ class PlanController extends Controller
      */
     public function create()
     {
-        //
+        $executers = User::where('user_type','مددجو')->whereHas('office')->get();
+        $users = User::where('user_type','!=','مددجو')->whereHas('office')->get();
+        return view('panel.plan.create',compact('executers','users'));
     }
 
     /**
