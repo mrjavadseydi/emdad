@@ -53,7 +53,7 @@ class User extends Authenticatable
         return $this->hasOne(UserOffice::class,'user_id');
     }
     public function skill(){
-        return $this->hasMany(Skill::class,'user_id');
+        return $this->hasMany(Skill::class,'executor_id');
     }
 
 }
