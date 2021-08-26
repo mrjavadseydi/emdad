@@ -15,4 +15,10 @@ class Plan extends Model
     public function user(){
         return $this->belongsTo(User::class,"user_id");
     }
+    public function meta(){
+        return $this->hasMany(PlanMeta::class,'plan_id');
+    }
+    public function fund(){
+        return $this->hasOne(PlanFund::class,'plan_id');
+    }
 }

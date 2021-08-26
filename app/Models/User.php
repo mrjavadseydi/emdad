@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function office(){
         return $this->hasOne(UserOffice::class,'user_id');
     }
+    public function skill(){
+        return $this->hasMany(Skill::class,'user_id');
+    }
+
 }
