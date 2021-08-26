@@ -81,7 +81,8 @@ class PlanController extends Controller
      */
     public function show($id)
     {
-        //
+        $plan = Plan::whereId($id)->first();
+        return view('panel.plan.show',compact('plan'));
     }
 
     /**

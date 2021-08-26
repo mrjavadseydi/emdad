@@ -6,4 +6,4 @@ Route::get('office/users/{id}',[\App\Http\Controllers\OfficeController::class,'s
 Route::post('office/users/{id}',[\App\Http\Controllers\OfficeController::class,'saveOfficeUsers']);
 Route::resource('plan',\App\Http\Controllers\PlanController::class);
 Route::post('skill/list',[\App\Http\Controllers\PlanController::class,'skills']);
-Route::post('skill/list',[\App\Http\Controllers\PlanController::class,'skills']);
+Route::get('acceptMeta/{id}',[\App\Http\Controllers\PlanController::class,'PlanMeta'])->name('plan.meta.active');
