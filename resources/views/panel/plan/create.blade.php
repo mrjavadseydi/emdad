@@ -44,7 +44,8 @@
                                 <label>
                                     مجری
                                 </label>
-                                <select class="form-control" name="executor_id">
+                                <select class="form-control" id="executor" name="executor_id">
+                                    <option value="0">انتخاب کنید</option>
                                     @foreach($executers as $executer)
                                         <option value="{{$executer->id}}">
                                             {{$executer->name}}
@@ -299,6 +300,50 @@
             $('.normal-example').persianDatepicker({
                 format: 'YYYY/MM/DD',
             });
+            $("#executor").change(()=>{
+                var selectedItem = $('#executor').children("option:selected").val();
+                if(selectedItem.length>0){
+                    axios.post('/panel/skill/list',{id:selectedItem})
+                        .then(res => {
+                            let data = res.data;
+                            data = data.map(item => {
+                                return `
+                                 <div class="row input-group p-1">
+                <div class="col-md-6">
+
+                    <label>
+                        نوع سابقه مهارتی
+                    </label>
+                    <select class="form-control" name="skillType[]">
+                        <option
+${item.type=="سوابق تجربی/شاگردی" ? "selected" : null}
+>سوابق تجربی/شاگردی</option>
+                        <option
+${item.type=="گواهینامه مهارتی بدون معرفی امداد" ? "selected" : null}
+>گواهینامه مهارتی بدون معرفی امداد</option>
+                        <option
+${item.type=="گواهینامه مهارتی با معرفی امداد" ? "selected" : null}
+>گواهینامه مهارتی با معرفی امداد</option>
+                    </select>
+
+
+                </div>
+                <div class="col-md-6">
+                    <label>
+                        توضیحات
+                    </label>
+                    <input type="text" name="skillValue[]" class="form-control" value="${item.value}" placeholder="توضیحات">
+                </div>
+            </div>
+                                `
+                            });
+                            $("#place1").after(data);
+                        }).catch(err => {
+                        console.log(err)
+                    });
+                }
+            });
+
 
         });
 

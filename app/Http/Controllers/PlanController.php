@@ -117,4 +117,15 @@ class PlanController extends Controller
     {
         //
     }
+
+
+    /**
+     * get executer Skill
+     * @param Request $request
+     */
+    protected function skills(Request $request)
+    {
+        $skill = Skill::where('executor_id',$request->id)->get();
+        return response()->json($skill);
+    }
 }
