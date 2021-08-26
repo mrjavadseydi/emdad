@@ -128,4 +128,20 @@ class PlanController extends Controller
         $skill = Skill::where('executor_id',$request->id)->get();
         return response()->json($skill);
     }
+
+
+    /**
+     * active or de active plan meta
+     * @param $id
+     */
+    public function PlanMeta($id)
+    {
+        $meta = PlanMeta::whereId($id)->first();
+        $meta->update([
+            'active' => !$meta->active
+        ]);
+        Alert::toast(' با موفقیت انجام شد', 'success');
+
+        return back();
+    }
 }
