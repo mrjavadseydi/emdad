@@ -21,6 +21,7 @@ class PlanController extends Controller
     public function index()
     {
         $plans = Plan::all();
+
         return view('panel.plan.index',compact('plans'));
     }
 
@@ -29,11 +30,18 @@ class PlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $executers = User::where('user_type','مددجو')->whereHas('office')->get();
-        $users = User::where('user_type','!=','مددجو')->whereHas('office')->get();
-        return view('panel.plan.create',compact('executers','users'));
+        if ($request->has('user_id')){
+            $executers = User::where([['user_type','مددجو'],['id',$request->user_id]])->whereHas('office')->get();
+            if (count($executers)!=1){
+                $executers = User::where('user_type','مددجو')->whereHas('office')->get();
+            }
+        }else{
+            $executers = User::where('user_type','مددجو')->whereHas('office')->get();
+        }
+
+        return view('panel.plan.create',compact('executers'));
     }
 
     /**

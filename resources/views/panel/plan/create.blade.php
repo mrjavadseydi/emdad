@@ -40,15 +40,15 @@
                     <form action="{{route('plan.store')}}" method="post">
                         @csrf
                         <div class="row input-group p-1">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label>
                                     مجری
                                 </label>
-                                <select class="form-control" id="executor" name="executor_id">
+                                <select class="form-control select2" id="executor" name="executor_id">
                                     <option value="0">انتخاب کنید</option>
                                     @foreach($executers as $executer)
                                         <option value="{{$executer->id}}">
-                                            {{$executer->name}}
+                                            {{$executer->name . " - " . $executer->national_id}}
                                         </option>
                                     @endforeach
                                 </select>
@@ -345,5 +345,12 @@ ${item.type=="گواهینامه مهارتی با معرفی امداد" ? "sel
             var lsthmtl = $(".clone2").html();
             $("#place2").after(lsthmtl);
         }
+
+    </script>
+
+    <script>
+        $(".select2").select2({
+            placeholder: "انتخاب کنید"
+        });
     </script>
 @endsection

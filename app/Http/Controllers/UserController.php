@@ -61,7 +61,6 @@ class UserController extends Controller
             return redirect(route('plan.create').'/?user_id='.$user->id);
         }else{
             return redirect(route('users.index'));
-
         }
     }
 
