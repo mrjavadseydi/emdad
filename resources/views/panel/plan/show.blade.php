@@ -87,7 +87,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{route('plan.meta.active',$meta->iلهف d)}}" class="btn btn-info btn-sm">
+                                    <a href="{{route('plan.meta.active',$meta->id)}}" class="btn btn-info btn-sm">
                                         تغییر وضعیت
                                     </a>
                                 </td>

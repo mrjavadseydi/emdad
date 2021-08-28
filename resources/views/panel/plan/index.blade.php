@@ -30,7 +30,7 @@
                         <tr>
                             <th style="width: 10px">#</th>
                             <th>مجری</th>
-                            <th>مسئول</th>
+
                             <th>عنوان</th>
                             <th>نوع طرح</th>
                             <th>کد طرح</th>
@@ -49,9 +49,7 @@
                                 <td>{{$loop->iteration}}.</td>
 
                                 <td>{{$plan->executer->name}}</td>
-                                <td>
-                                    {{$plan->user->name}}
-                                </td>
+
 
                                 <td>
                                     {{$plan->title}}
@@ -72,13 +70,13 @@
                                     {{$plan->user->office->office->province->name}}
                                 </td>
                                 <td>
-                                    {{$plan->user->office->office->state->name}}
+                                    {{$plan->executer->office->office->state->name}}
                                 </td>
                                 <td>
-                                    {{$plan->user->office->office->city->name}}
+                                    {{$plan->executer->office->office->city->name}}
                                 </td>
                                 <td>
-                                    {{$plan->user->office->office->name}}
+                                    {{$plan->executer->office->office->name}}
                                 </td>
                                 <td>
 
@@ -98,7 +96,6 @@
                             <th class="filter">
                                 <input id="title" class="form-control" type="text" placeholder="مجری">
                             </th>
-                            <th><input id="title" class="form-control" type="text" placeholder="مسئول"></th>
                             <th><input id="title" class="form-control" type="text" placeholder="عنوان"></th>
                             <th><input id="title" class="form-control" type="text" placeholder="تاریخ"></th>
 

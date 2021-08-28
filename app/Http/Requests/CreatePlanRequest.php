@@ -25,7 +25,6 @@ class CreatePlanRequest extends FormRequest
     {
         return [
             'executor_id'=>'required',
-            'user_id'=>'required',
             'group'=>'required',
             'title'=>'required',
             'type'=>'required',
