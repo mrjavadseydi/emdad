@@ -169,6 +169,22 @@
 
 
                         </div>
+                        <div class="row input-group p-1">
+                            <div class="col-md-12">
+                                <label>
+                                    اداره
+                                </label>
+
+                                <select   class="form-control" name="office_id">
+                                    <option value="0">بدون اداره</option>
+                                    @foreach($offices as $office)
+                                        <option value="{{$office->id}}">
+                                        {{$office->name ." - " . $office->city->name. " - ". $office->code}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <input type="submit" class="m-3 btn btn-success" value="ثبت">
                     </form>
                 </div>

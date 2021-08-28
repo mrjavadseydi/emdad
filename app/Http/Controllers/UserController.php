@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateUserRequest;
 use App\Jobs\SendPasswordSms;
+use App\Models\Office;
 use App\Models\User;
+use App\Models\UserOffice;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -28,7 +30,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('panel.user.create');
+        $offices = Office::all();
+        return view('panel.user.create',compact('offices'));
     }
 
     /**
@@ -44,6 +47,12 @@ class UserController extends Controller
         }
         $request->password = bcrypt($request->password);
         $user = User::create($request->all());
+        if($request->office_id != 0){
+            UserOffice::create([
+                'user_id'=>$user->id,
+                'office_id'=>$request->office_id
+            ]);
+        }
         Alert::toast('ثبت نام کاربر با موفقیت انجام شد', 'success');
         return redirect(route('users.index'));
     }

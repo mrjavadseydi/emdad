@@ -127,12 +127,9 @@
             $('.tfhide').hide();
 
             var table = $("#table-data2").DataTable({
-
                 initComplete: function () {
-                    // Apply the search
                     this.api().columns().every(function () {
                         var that = this;
-
                         $('input', this.footer()).on('keyup change clear', function () {
                             if (that.search() !== this.value) {
                                 that
@@ -152,8 +149,7 @@
                 "columnDefs": [{
                     "targets": 'no-sort',
                     "orderable": false,
-                }]
-                ,
+                }],
                 fixedHeader: true,
                 language: {
                     "info": " _START_ تا _END_ از _TOTAL_ ",
@@ -211,7 +207,6 @@
                                 .prepend(
                                     '<img src="{{ asset('/images/logo.png') }}" style="position:absolute; top:0; right:0;left: 0;margin: 0 auto;display: block;opacity: .05" />'
                                 );
-
                             $(win.document.body).find('table')
                                 .addClass('compact')
                                 .css('font-size', 'inherit');

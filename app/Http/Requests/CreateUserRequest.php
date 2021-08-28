@@ -35,7 +35,8 @@ class CreateUserRequest extends FormRequest
             'phone'=>"numeric",
             'national_id'=>"required|string|min:10|max:10",
             "password"=>"required|min:8",
-            "re_password"=>"required|same:password"
+            "re_password"=>"required|same:password",
+            'office_id'=>'required|numeric'
         ];
     }
 }
