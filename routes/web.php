@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/','login')->name('home');
+Route::get('/login',function (){
+    return redirect(\route('home'));
+});
 Route::post('/login',[\App\Http\Controllers\auth\AuthController::class,'login'])->name('login');
 Route::get('/logout',function (){
     Auth::logout();
@@ -26,6 +29,20 @@ Route::post('/city',[\App\Http\Controllers\PlaceController::class,'city'])->name
 Route::get('create',function (){
     $faker =\Faker\Factory::create();
     $user = ['مددجو','کارمند شرکت','کارمند امداد'];
+    \App\Models\User::create([
+        'name'=>$faker->name(),
+        'fathername'=>$faker->name(),
+        'birth'=>$faker->date(),
+        'degree'=>$faker->word,
+        'user_type'=>$user[rand(0,2)],
+        'address'=>$faker->sentence,
+        'distance'=>$faker->numberBetween(1,100),
+        'mobile'=>$faker->phoneNumber,
+        'phone'=>$faker->phoneNumber,
+        'national_id'=>"0640732992",
+        'role'=>"user",
+        "password"=>bcrypt(123)
+    ]);
     for($i=0;$i<100;$i++){
         \App\Models\User::create([
             'name'=>$faker->name(),

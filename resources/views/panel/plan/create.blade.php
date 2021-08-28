@@ -54,20 +54,7 @@
                                 </select>
 
                             </div>
-                            <div class="col-md-6">
-                                <label>
-                                    مسئول
-                                </label>
 
-
-                                <select class="form-control" name="user_id">
-                                    @foreach($users as $user)
-                                        <option value="{{$user->id}}">
-                                            {{$user->name}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
 
                         </div>
                         <div class="row input-group p-1">

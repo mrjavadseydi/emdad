@@ -67,7 +67,10 @@ class OfficeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $office = Office::findOrFail($id);
+        $provines = Province::all();
+
+        return  view('panel.office.edit',compact('office','provines'));
     }
 
     /**
@@ -77,9 +80,12 @@ class OfficeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateOfficeRequest $request, $id)
     {
-        //
+        $office = Office::findOrFail($id);
+        $office->update($request->validated());
+        Alert::toast('ویرایش اداره با موفقیت انجام شد', 'success');
+        return redirect(route('office.index'));
     }
 
     /**

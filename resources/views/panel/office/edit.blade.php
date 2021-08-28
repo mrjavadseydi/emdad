@@ -8,7 +8,7 @@
             <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="{{route('panel')}}">خانه</a></li>
                 <li class="breadcrumb-item ">ادارات</li>
-                <li class="breadcrumb-item active">ایجاد اداره</li>
+                <li class="breadcrumb-item active">ویرایش اداره</li>
             </ol>
         </div><!-- /.col -->
     </div>
@@ -18,7 +18,7 @@
         <div class="col-md-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title d-inline">ایجاد اداره
+                    <h3 class="card-title d-inline">ویرایش اداره
                     </h3>
 
                 </div>
@@ -33,16 +33,17 @@
                 @endif
                 <div class="card-body">
 
-                    <form action="{{route('office.store')}}" method="post">
+                    <form action="{{route('office.update',$office->id)}}" method="post">
                         @csrf
+                        @method('put')
                         <div class="row input-group p-1">
                             <div class="col-md-6">
                                 <label>
-                                   نام اداره
+                                    نام اداره
                                 </label>
 
                                 <input type="text" name="name" class="form-control" placeholder="امداد مرکزی"
-                                       value="{{Request()->old('name')??""}}">
+                                       value="{{Request()->old('name')??$office->name}}">
                             </div>
                             <div class="col-md-6">
                                 <label>
@@ -50,7 +51,7 @@
                                 </label>
 
                                 <input type="number" name="code" class="form-control" placeholder="12432"
-                                       value="{{Request()->old('code')??""}}">
+                                       value="{{Request()->old('code')??$office->code}}">
                             </div>
 
                         </div>
@@ -62,7 +63,7 @@
                                     تلفن
                                 </label>
                                 <input type="text" name="phone" class="form-control" placeholder=" 05632222222"
-                                       value="{{Request()->old('phone')??""}}">
+                                       value="{{Request()->old('phone')??$office->phone}}">
                             </div>
 
                             <div class="col-md-6">
@@ -70,7 +71,7 @@
                                     نام ریاست اداره
                                 </label>
                                 <input type="text" name="boss_name" class="form-control"
-                                       placeholder="دکتر احمد احمدی" value="{{Request()->old('boss_name')??""}}">
+                                       placeholder="دکتر احمد احمدی" value="{{Request()->old('boss_name')??$office->boss_name}}">
                             </div>
                         </div>
 
@@ -80,14 +81,14 @@
                                     تلفن دفتر شرکت
                                 </label>
                                 <input type="text" name="phone_office" class="form-control" placeholder="091549515555"
-                                       value="{{Request()->old('phone_office')??""}}">
+                                       value="{{Request()->old('phone_office')??$office->phone_office}}">
                             </div>
                             <div class="col-md-6">
                                 <label>
-                                   مسئول دفتر شرکت
+                                    مسئول دفتر شرکت
                                 </label>
                                 <input type="text" name="employment_name" class="form-control" placeholder="مهندس علی عبادی"
-                                       value="{{Request()->old('employment_name')??""}}">
+                                       value="{{Request()->old('employment_name')??$office->employment_name}}">
                             </div>
                         </div>
                         <div class="row input-group p-1">
@@ -96,9 +97,10 @@
                                     استان
                                 </label>
                                 <select id="province" name="province_id" class="form-control">
-                                    <option value="0">انتخاب کنید</option>
 
-                                @foreach($provines as $province)
+                                    <option value="{{$office->province_id}}">{{$office->province->name}}</option>
+
+                                    @foreach($provines as $province)
                                         <option value="{{$province->id}}">{{$province->name}}</option>
 
                                     @endforeach
@@ -109,6 +111,7 @@
                                     شهرستان
                                 </label>
                                 <select id="state" name="state_id" class="form-control">
+                                    <option value="{{$office->state_id}}">{{$office->state->name}}</option>
 
                                 </select>
                             </div>
@@ -117,6 +120,7 @@
                                     شهر
                                 </label>
                                 <select id="city" name="city_id" class="form-control">
+                                    <option value="{{$office->city_id}}">{{$office->city->name}}</option>
 
                                 </select>
                             </div>
@@ -128,7 +132,7 @@
                             </label>
                             <div class="col-12 ">
 
-                                <textarea name="address" class="form-control p-0">{{Request()->old('address')??""}}</textarea>
+                                <textarea name="address" class="form-control p-0">{{Request()->old('address')??$office->address}}</textarea>
 
                             </div>
                         </div>
@@ -139,7 +143,7 @@
                             </label>
                             <div class="col-12 ">
 
-                                <textarea name="address_office" class="form-control p-0">{{Request()->old('address_office')??""}}</textarea>
+                                <textarea name="address_office" class="form-control p-0">{{Request()->old('address_office')??$office->address_office}}</textarea>
 
                             </div>
                         </div>
@@ -153,40 +157,40 @@
 
 @endsection
 @section('script')
-<script>
+    <script>
 
-    $(document).ready(function(){
-        $("#province").change(()=>{
-            var selectedItem = $('#province').children("option:selected").val();
-            if(selectedItem.length>0){
-                axios.post('/state',{id:selectedItem})
-                    .then(res => {
-                        let data = res.data;
-                        data = data.map(item => {
-                           return `<option value="${item.id}">${item.name}</option>`
-                        });
-                        $('#state').empty().append("<option value='0'>انتخاب کنید</option>"+data);
-                        $('#city').empty();
-                    }).catch(err => {
-                    console.log(err)
-                });
-            }
+        $(document).ready(function(){
+            $("#province").change(()=>{
+                var selectedItem = $('#province').children("option:selected").val();
+                if(selectedItem.length>0){
+                    axios.post('/state',{id:selectedItem})
+                        .then(res => {
+                            let data = res.data;
+                            data = data.map(item => {
+                                return `<option value="${item.id}">${item.name}</option>`
+                            });
+                            $('#state').empty().append("<option value='0'>انتخاب کنید</option>"+data);
+                            $('#city').empty();
+                        }).catch(err => {
+                        console.log(err)
+                    });
+                }
+            });
+            $("#state").change(()=>{
+                var selectedItem = $('#state').children("option:selected").val();
+                if(selectedItem.length>0){
+                    axios.post('/city',{id:selectedItem})
+                        .then(res => {
+                            let data = res.data;
+                            data = data.map(item => {
+                                return `<option value="${item.id}">${item.name}</option>`
+                            });
+                            $('#city').empty().append("<option value='0'>انتخاب کنید</option>"+data);
+                        }).catch(err => {
+                        console.log(err)
+                    });
+                }
+            });
         });
-        $("#state").change(()=>{
-            var selectedItem = $('#state').children("option:selected").val();
-            if(selectedItem.length>0){
-                axios.post('/city',{id:selectedItem})
-                    .then(res => {
-                        let data = res.data;
-                        data = data.map(item => {
-                            return `<option value="${item.id}">${item.name}</option>`
-                        });
-                        $('#city').empty().append("<option value='0'>انتخاب کنید</option>"+data);
-                    }).catch(err => {
-                    console.log(err)
-                });
-            }
-        });
-    });
-</script>
+    </script>
 @endsection
