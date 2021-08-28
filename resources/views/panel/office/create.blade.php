@@ -128,7 +128,7 @@
                             </label>
                             <div class="col-12 ">
 
-                                <textarea name="address" class="form-control p-0">{{Request()->old('address')??""}}</textarea>
+                                <textarea name="address" class="form-control w-99">{{Request()->old('address')??""}}</textarea>
 
                             </div>
                         </div>
@@ -139,7 +139,7 @@
                             </label>
                             <div class="col-12 ">
 
-                                <textarea name="address_office" class="form-control p-0">{{Request()->old('address_office')??""}}</textarea>
+                                <textarea name="address_office" class="form-control w-99">{{Request()->old('address_office')??""}}</textarea>
 
                             </div>
                         </div>

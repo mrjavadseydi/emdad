@@ -117,6 +117,12 @@
                 background: #9b59b6;
             }
         }
+        .red-star{
+            color: red;
+        }
+        .w-99{
+            max-width:99%;
+        }
     </style>
     <script src="{{asset('AdminAsset/')}}/plugins/jquery/jquery.min.js"></script>
 

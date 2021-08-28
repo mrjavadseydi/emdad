@@ -21,6 +21,10 @@
                     </h3>
 
                 </div>
+                <div class="alert alert-info p-2 m-2">
+                    در صورت خالی گذاشتن کلمه عبور ،‌ کد ملی به عنوان کلمه عبور انتخاب میشود
+
+                </div>
                 @if ($errors->any())
                     <div class="alert alert-danger m-1">
                         <ul>
@@ -37,6 +41,9 @@
                         <div class="row input-group p-1">
                             <div class="col-md-6">
                                 <label>
+                                    <span class="red-star">
+                                        *
+                                    </span>
                                     کد ملی
                                 </label>
 
@@ -45,6 +52,10 @@
                             </div>
                             <div class="col-md-6">
                                 <label>
+
+                                    <span class="red-star">
+                                        *
+                                    </span>
                                     نام
                                 </label>
 
@@ -66,6 +77,7 @@
 
                             <div class="col-md-6">
                                 <label>
+
                                     تاریخ تولد
                                 </label>
                                 <input type="text" name="birth" class="form-control normal-example"
@@ -91,6 +103,10 @@
                             </div>
                             <div class="col-md-6">
                                 <label>
+
+                                    <span class="red-star">
+                                        *
+                                    </span>
                                     تلفن همراه
                                 </label>
                                 <input type="text" name="mobile" class="form-control" placeholder="091549515555"
@@ -132,6 +148,10 @@
                         <div class="row input-group p-1">
                             <div class="col-md-6">
                                 <label>
+
+                                    <span class="red-star">
+                                        *
+                                    </span>
                                     نوع کاربر
                                 </label>
                                 <select id="user_type" onchange="f1()" class="form-control" name="user_type">
@@ -152,6 +172,28 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="row input-group p-1">
+                            <div class="col-md-12">
+                                <label>
+
+                                    <span class="red-star">
+                                        *
+                                    </span>
+                                    اداره
+
+                                </label>
+
+                                <select   class="form-control" name="office_id">
+                                    <option value="0">بدون اداره</option>
+                                    @foreach($offices as $office)
+                                        <option value="{{$office->id}}">
+                                            {{$office->name ." - " . $office->city->name. " - ". $office->code}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                         <div class=" mt-2">
 
                             <label class="p-1 d-block">
@@ -159,7 +201,7 @@
                             </label>
                                 <div class="col-12 ">
 
-                                        <textarea name="address" class="form-control p-0">{{Request()->old('address')??""}}</textarea>
+                                        <textarea name="address" class="form-control w-99">{{Request()->old('address')??""}}</textarea>
 
 
                                 </div>
@@ -168,22 +210,6 @@
 
 
 
-                        </div>
-                        <div class="row input-group p-1">
-                            <div class="col-md-12">
-                                <label>
-                                    اداره
-                                </label>
-
-                                <select   class="form-control" name="office_id">
-                                    <option value="0">بدون اداره</option>
-                                    @foreach($offices as $office)
-                                        <option value="{{$office->id}}">
-                                        {{$office->name ." - " . $office->city->name. " - ". $office->code}}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
                         </div>
                         <input type="submit" class="m-3 btn btn-info" name="create_new" value="ثبت و ایجاد کاربر جدید">
                         <input type="submit" class="m-3 btn btn-primary" name="create_plan" value="ثبت و ایجاد طرح">

@@ -25,17 +25,17 @@ class CreateUserRequest extends FormRequest
     {
         return [
             'name'=>"required|string",
-            'fathername'=>"required|string",
+            'fathername'=>"string|nullable",
             'birth'=>"required|string",
             'degree'=>"string",
             'user_type'=>"required|string",
             'address'=>"string",
-            'distance'=>'numeric',
+            'distance'=>'numeric|nullable',
             'mobile'=>"required|string|starts_with:09",
-            'phone'=>"numeric",
+            'phone'=>"numeric|nullable",
             'national_id'=>"required|string|min:10|max:10",
-            "password"=>"required|min:8",
-            "re_password"=>"required|same:password",
+            "password"=>"nullable",
+            "re_password"=>"nullable|same:password",
             'office_id'=>'required|numeric'
         ];
     }
