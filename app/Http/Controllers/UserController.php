@@ -53,8 +53,16 @@ class UserController extends Controller
                 'office_id'=>$request->office_id
             ]);
         }
+
         Alert::toast('ثبت نام کاربر با موفقیت انجام شد', 'success');
-        return redirect(route('users.index'));
+        if ($request->has('create_new')){
+            return redirect(route('users.create'));
+        }elseif($request->has('create_plan')){
+            return redirect(route('plan.create').'/?user_id='.$user->id);
+        }else{
+            return redirect(route('users.index'));
+
+        }
     }
 
     /**

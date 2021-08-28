@@ -185,7 +185,9 @@
                                 </select>
                             </div>
                         </div>
-                        <input type="submit" class="m-3 btn btn-success" value="ثبت">
+                        <input type="submit" class="m-3 btn btn-info" name="create_new" value="ثبت و ایجاد کاربر جدید">
+                        <input type="submit" class="m-3 btn btn-primary" name="create_plan" value="ثبت و ایجاد طرح">
+                        <input type="submit" class="m-3 btn btn-success" value="ثبت و بازگشت">
                     </form>
                 </div>
             </div>
