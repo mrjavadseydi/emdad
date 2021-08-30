@@ -67,7 +67,7 @@
                                     {{$plan->bank}}
                                 </td>
                                 <td>
-                                    {{$plan->user->office->office->province->name}}
+                                    {{$plan->executer->office->office->province->name}}
                                 </td>
                                 <td>
                                     {{$plan->executer->office->office->state->name}}
@@ -82,6 +82,9 @@
 
                                     <a class="btn btn-sm btn-primary" href="{{route('plan.show',$plan->id)}}">
                                         <i class="fa fa-eye"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-info" href="{{route('plan.print',$plan->id)}}">
+                                        <i class="fa fa-print"></i>
                                     </a>
                                     <button type="button" class="btn btn-sm btn-danger trashbtn" data-id="{{$plan->id}}">
                                         <i class="fa fa-trash"></i>

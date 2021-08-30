@@ -47,7 +47,7 @@
                                     کد ملی
                                 </label>
 
-                                <input type="number" name="national_id" class="form-control" placeholder="0640733333"
+                                <input type="number" name="national_id" class="form-control"
                                        value="{{Request()->old('national_id')??""}}">
                             </div>
                             <div class="col-md-6">
@@ -59,7 +59,7 @@
                                     نام
                                 </label>
 
-                                <input type="text" name="name" class="form-control" placeholder="محمد علی احمدی"
+                                <input type="text" name="name" class="form-control"
                                        value="{{Request()->old('name')??""}}">
                             </div>
 
@@ -71,7 +71,7 @@
                                 <label>
                                     نام پدر
                                 </label>
-                                <input type="text" name="fathername" class="form-control" placeholder="سعید احمدی"
+                                <input type="text" name="fathername" class="form-control"
                                        value="{{Request()->old('fathername')??""}}">
                             </div>
 
@@ -81,7 +81,7 @@
                                     تاریخ تولد
                                 </label>
                                 <input type="text" name="birth" class="form-control normal-example"
-                                       placeholder="*******" value="{{Request()->old('birth')??""}}">
+                                       value="{{Request()->old('birth')??""}}">
                             </div>
                         </div>
 
@@ -109,7 +109,7 @@
                                     </span>
                                     تلفن همراه
                                 </label>
-                                <input type="text" name="mobile" class="form-control" placeholder="091549515555"
+                                <input type="text" name="mobile" class="form-control"
                                        value="{{Request()->old('mobile')??""}}">
                             </div>
                         </div>
@@ -119,14 +119,14 @@
                                     تلفن ثابت
                                 </label>
 
-                                <input type="text" name="phone" class="form-control" placeholder="05632222222"
+                                <input type="text" name="phone" class="form-control"
                                        value="{{Request()->old('phone')??""}}">
                             </div>
                             <div class="col-md-6">
                                 <label>
                                     فاصله از مرکز(km)
                                 </label>
-                                <input type="number" name="distance" class="form-control" placeholder="12"
+                                <input type="number" name="distance" class="form-control"
                                        value="{{Request()->old('distance')??""}}">
                             </div>
                         </div>
@@ -136,13 +136,13 @@
                                     کلمه عبور
                                 </label>
 
-                                <input type="password" name="password" class="form-control" placeholder="*******" ">
+                                <input type="password" name="password" class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label>
                                     تکرار کلمه عبور
                                 </label>
-                                <input type="password" name="re_password" class="form-control" placeholder="*******">
+                                <input type="password" name="re_password" class="form-control" >
                             </div>
                         </div>
                         <div class="row input-group p-1">
@@ -187,7 +187,7 @@
                                     <option value="0">بدون اداره</option>
                                     @foreach($offices as $office)
                                         <option value="{{$office->id}}">
-                                            {{$office->name ." - " . $office->city->name. " - ". $office->code}}
+                                            {{$office->name ." - " . $office->city->name}}
                                         </option>
                                     @endforeach
                                 </select>

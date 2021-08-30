@@ -29,7 +29,7 @@ class CreateUserRequest extends FormRequest
             'birth'=>"required|string",
             'degree'=>"string",
             'user_type'=>"required|string",
-            'address'=>"string",
+            'address'=>"nullable|string",
             'distance'=>'numeric|nullable',
             'mobile'=>"required|string|starts_with:09",
             'phone'=>"numeric|nullable",

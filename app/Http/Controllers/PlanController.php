@@ -22,7 +22,7 @@ class PlanController extends Controller
     {
         $plans = Plan::all();
 
-        return view('panel.plan.index',compact('plans'));
+        return view("panel.plan.index", compact("plans"));
     }
 
     /**
@@ -32,16 +32,25 @@ class PlanController extends Controller
      */
     public function create(Request $request)
     {
-        if ($request->has('user_id')){
-            $executers = User::where([['user_type','مددجو'],['id',$request->user_id]])->whereHas('office')->get();
-            if (count($executers)!=1){
-                $executers = User::where('user_type','مددجو')->whereHas('office')->get();
+        if ($request->has("user_id")) {
+            $executers = User::where([
+                ["user_type", "مددجو"],
+                ["id", $request->user_id],
+            ])
+                ->whereHas("office")
+                ->get();
+            if (count($executers) != 1) {
+                $executers = User::where("user_type", "مددجو")
+                    ->whereHas("office")
+                    ->get();
             }
-        }else{
-            $executers = User::where('user_type','مددجو')->whereHas('office')->get();
+        } else {
+            $executers = User::where("user_type", "مددجو")
+                ->whereHas("office")
+                ->get();
         }
 
-        return view('panel.plan.create',compact('executers'));
+        return view("panel.plan.create", compact("executers"));
     }
 
     /**
@@ -52,33 +61,44 @@ class PlanController extends Controller
      */
     public function store(CreatePlanRequest $request)
     {
-        $plan = Plan::create($request->validated());
-        PlanFund::create([
-            'executor_id'=>$request->executor_id,
-            'plan_id'=>$plan->id,
-            'executer_fund'=>$request->executer_fund,
-            'summery'=>$request->summery,
-            'fund'=>$request->fund,
-            'executer_summery'=>$request->executer_summery,
+        $plan = Plan::create([
+            "executor_id" => $request["executor_id"],
+            "group" => $request["group"],
+            "title" => $request["title"],
+            "type" => $request["type"],
+            "source" => $request["source"],
+            "bank" => $request["bank"],
+            "date" => $request["date"],
+            "code" => $request["code"],
+            "space" => $request["space"],
+            "employment" => $request["employment"],
         ]);
-        foreach ($request->skillType as $key => $value){
+        //        PlanFund::create([
+        //            "executor_id" => $request->executor_id,
+        //            "plan_id" => $plan->id,
+        //            "executer_fund" => $request->executer_fund,
+        //            "summery" => $request->summery,
+        //            "fund" => $request->fund,
+        //            "executer_summery" => $request->executer_summery,
+        //        ]);
+        foreach ($request->skillType as $key => $value) {
             Skill::create([
-                'executor_id'=>$request->executor_id,
-                'type'=>$value,
-                'value'=>$request->skillValue[$key]
+                "executor_id" => $request->executor_id,
+                "type" => $value,
+                "value" => $request->skillValue[$key],
             ]);
         }
-        foreach ($request->metaType as $key =>$value){
+        foreach ($request->metaType as $key => $value) {
             PlanMeta::create([
-                'executor_id'=>$request->executor_id,
-                'plan_id'=>$plan->id,
-                'type'=>$value,
-                'value'=>$request->metaValue[$key],
-                'active'=>($request->metaActive[$key]==true)
+                "executor_id" => $request->executor_id,
+                "plan_id" => $plan->id,
+                "type" => $value,
+                "value" => $request->metaValue[$key],
+                "active" => $request->metaActive[$key] == true,
             ]);
         }
-        Alert::toast('ثبت طرح با موفقیت انجام شد', 'success');
-        return redirect(route('plan.index'));
+        Alert::toast("ثبت طرح با موفقیت انجام شد", "success");
+        return redirect(route("plan.index"));
     }
 
     /**
@@ -90,7 +110,7 @@ class PlanController extends Controller
     public function show($id)
     {
         $plan = Plan::whereId($id)->first();
-        return view('panel.plan.show',compact('plan'));
+        return view("panel.plan.show", compact("plan"));
     }
 
     /**
@@ -127,17 +147,15 @@ class PlanController extends Controller
         //
     }
 
-
     /**
      * get executer Skill
      * @param Request $request
      */
     protected function skills(Request $request)
     {
-        $skill = Skill::where('executor_id',$request->id)->get();
+        $skill = Skill::where("executor_id", $request->id)->get();
         return response()->json($skill);
     }
-
 
     /**
      * active or de active plan meta
@@ -147,10 +165,16 @@ class PlanController extends Controller
     {
         $meta = PlanMeta::whereId($id)->first();
         $meta->update([
-            'active' => !$meta->active
+            "active" => !$meta->active,
         ]);
-        Alert::toast(' با موفقیت انجام شد', 'success');
+        Alert::toast(" با موفقیت انجام شد", "success");
 
         return back();
+    }
+
+    public function print($id)
+    {
+        $plan = Plan::whereId($id)->first();
+        return view("panel.plan.print", compact("plan"));
     }
 }

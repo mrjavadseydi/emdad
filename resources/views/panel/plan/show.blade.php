@@ -149,32 +149,32 @@
 
                         </tbody>
                     </table>
-                    <hr>
-                    <span>
-                            سرمایه طرح
-                    </span>
-                    <table class="table table-striped table-bordered ">
-                        <thead>
-                        <tr>
-                            <th>آورده مجری</th>
-                            <th>ارزش آورده</th>
-                            <th>خلاصه اقلام خریداری شده با تسهیلات</th>
-                            <th>مبلغ تسهیلات</th>
+{{--                    <hr>--}}
+{{--                    <span>--}}
+{{--                            سرمایه طرح--}}
+{{--                    </span>--}}
+{{--                    <table class="table table-striped table-bordered ">--}}
+{{--                        <thead>--}}
+{{--                        <tr>--}}
+{{--                            <th>آورده مجری</th>--}}
+{{--                            <th>ارزش آورده</th>--}}
+{{--                            <th>خلاصه اقلام خریداری شده با تسهیلات</th>--}}
+{{--                            <th>مبلغ تسهیلات</th>--}}
 
-                        </tr>
-                        </thead>
-                        <tbody>
+{{--                        </tr>--}}
+{{--                        </thead>--}}
+{{--                        <tbody>--}}
 
-                        <tr>
-                            <td>{{$plan->fund->executer_summery}}</td>
-                            <td>{{$plan->fund->executer_fund}}</td>
-                            <td>{{$plan->fund->summery}}</td>
-                            <td>{{$plan->fund->fund}}</td>
-                        </tr>
+{{--                        <tr>--}}
+{{--                            <td>{{$plan->fund->executer_summery}}</td>--}}
+{{--                            <td>{{$plan->fund->executer_fund}}</td>--}}
+{{--                            <td>{{$plan->fund->summery}}</td>--}}
+{{--                            <td>{{$plan->fund->fund}}</td>--}}
+{{--                        </tr>--}}
 
-                        </tbody>
-                    </table>
-                </div>
+{{--                        </tbody>--}}
+{{--                    </table>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

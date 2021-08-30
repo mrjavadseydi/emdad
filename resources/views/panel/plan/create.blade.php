@@ -142,49 +142,49 @@
                                        value="{{Request()->old('space')}}">
                             </div>
                         </div>
-                        <hr>
-                        <span>
-                            سرمایه طرح
-                        </span>
-                        <div class=" mt-2">
+{{--                        <hr>--}}
+{{--                        <span>--}}
+{{--                            سرمایه طرح--}}
+{{--                        </span>--}}
+{{--                        <div class=" mt-2">--}}
 
-                            <label class="p-1 d-block">
-                                آورده مجری (نام اقلام با امکانات):
-                            </label>
-                            <div class="col-12 ">
-                                <textarea name="executer_summery"
-                                          class="form-control p-0">{{Request()->old('executer_summery')??""}}</textarea>
+{{--                            <label class="p-1 d-block">--}}
+{{--                                آورده مجری (نام اقلام با امکانات):--}}
+{{--                            </label>--}}
+{{--                            <div class="col-12 ">--}}
+{{--                                <textarea name="executer_summery"--}}
+{{--                                          class="form-control p-0">{{Request()->old('executer_summery')??""}}</textarea>--}}
 
-                            </div>
-                        </div>
-                        <div class="row input-group p-1">
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="row input-group p-1">--}}
 
-                            <div class="col-md-6">
-                                <label>
-                                    ارزش آورده:
-                                </label>
-                                <input type="number" name="executer_fund" class="form-control" placeholder="100000000"
-                                       value="{{Request()->old('executer_fund')}}">
-                            </div>
-                            <div class="col-md-6">
-                                <label>
-                                    مبلغ تسهیلات:
-                                </label>
-                                <input type="number" name="fund" class="form-control" placeholder="100000000"
-                                       value="{{Request()->old('fund')}}">
-                            </div>
-                        </div>
-                        <div class=" mt-2">
+{{--                            <div class="col-md-6">--}}
+{{--                                <label>--}}
+{{--                                    ارزش آورده:--}}
+{{--                                </label>--}}
+{{--                                <input type="number" name="executer_fund" class="form-control" placeholder="100000000"--}}
+{{--                                       value="{{Request()->old('executer_fund')}}">--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-6">--}}
+{{--                                <label>--}}
+{{--                                    مبلغ تسهیلات:--}}
+{{--                                </label>--}}
+{{--                                <input type="number" name="fund" class="form-control" placeholder="100000000"--}}
+{{--                                       value="{{Request()->old('fund')}}">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class=" mt-2">--}}
 
-                            <label class="p-1 d-block">
-                                خلاصه اقلام خریداری شده با تسهیلات:
-                            </label>
-                            <div class="col-12 ">
-                                <textarea name="summery"
-                                          class="form-control p-0">{{Request()->old('summery')??""}}</textarea>
+{{--                            <label class="p-1 d-block">--}}
+{{--                                خلاصه اقلام خریداری شده با تسهیلات:--}}
+{{--                            </label>--}}
+{{--                            <div class="col-12 ">--}}
+{{--                                <textarea name="summery"--}}
+{{--                                          class="form-control p-0">{{Request()->old('summery')??""}}</textarea>--}}
 
-                            </div>
-                        </div>
+{{--                            </div>--}}
+{{--                        </div>--}}
                         <hr>
                         <span>
                             سوابق مهارتی

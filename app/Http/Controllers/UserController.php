@@ -45,13 +45,28 @@ class UserController extends Controller
         if($request->user_type!="مددجو"){
             SendPasswordSms::dispatch($request->mobile,$request->name,$request->password);
         }
-        if(is_null($request->paswword)){
+        if(!$request->has('password') ||   empty($request->paasword)){
+
             $request->password = bcrypt($request->national_id);
+
         }else{
             $request->password = bcrypt($request->password);
 
         }
-        $user = User::create($request->all());
+        $user = User::create([
+            'name'=>$request['name'],
+            'fathername'=>$request['fathername'],
+            'birth'=>$request['birth'],
+            'degree'=>$request['degree'],
+            'user_type'=>$request['user_type'],
+            'address'=>$request['address'],
+            'distance'=>$request['distance'],
+            'mobile'=>$request['mobile'],
+            'phone'=>$request['phone'],
+            'national_id'=>$request['national_id'],
+
+            "password"=>$request->password
+        ]);
         if($request->office_id != 0){
             UserOffice::create([
                 'user_id'=>$user->id,
