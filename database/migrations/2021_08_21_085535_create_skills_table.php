@@ -13,9 +13,9 @@ class CreateSkillsTable extends Migration
      */
     public function up()
     {
-        Schema::create('skills', function (Blueprint $table) {
+        Schema::create('Plan_skills', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('executor_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('plan_id')->constrained('plans')->onDelete('cascade');
             $table->string('type');
             $table->string('value');
             $table->timestamps();

@@ -15,17 +15,15 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('executor_id')->constrained('users')->onDelete('cascade');
-            $table->string('group');
-            $table->string('title');
-            $table->string('type');
-            $table->string('source');
-            $table->string('bank');
-            $table->string('date');
-            $table->string('code');
-            $table->string('space');
-            $table->integer('employment');
-
+            $table->foreignId('office_id')->constrained('offices')->onDelete('cascade');
+            $table->string('name');
+            $table->string('birth');
+            $table->string('marriage');
+            $table->unsignedSmallInteger('family')->default(0);
+            $table->string('degree');
+            $table->string('support_type');
+            $table->text('address');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

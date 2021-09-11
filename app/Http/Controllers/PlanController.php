@@ -6,7 +6,7 @@ use App\Http\Requests\CreatePlanRequest;
 use App\Models\Plan;
 use App\Models\PlanFund;
 use App\Models\PlanMeta;
-use App\Models\Skill;
+use App\Models\PlanSkill;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -82,7 +82,7 @@ class PlanController extends Controller
         //            "executer_summery" => $request->executer_summery,
         //        ]);
         foreach ($request->skillType as $key => $value) {
-            Skill::create([
+            PlanSkill::create([
                 "executor_id" => $request->executor_id,
                 "type" => $value,
                 "value" => $request->skillValue[$key],
@@ -153,7 +153,7 @@ class PlanController extends Controller
      */
     protected function skills(Request $request)
     {
-        $skill = Skill::where("executor_id", $request->id)->get();
+        $skill = PlanSkill::where("executor_id", $request->id)->get();
         return response()->json($skill);
     }
 

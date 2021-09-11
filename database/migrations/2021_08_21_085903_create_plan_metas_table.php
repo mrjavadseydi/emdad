@@ -15,12 +15,10 @@ class CreatePlanMetasTable extends Migration
     {
         Schema::create('plan_metas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('executor_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('plan_id')->constrained('plans')->onDelete('cascade');
             $table->string('type');
             $table->string('value');
             $table->boolean('active');
-
             $table->timestamps();
         });
     }

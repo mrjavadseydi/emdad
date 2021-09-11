@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('fathername')->nullable();
             $table->string('birth')->nullable();
             $table->string('degree')->nullable();
-            $table->enum('user_type',['مددجو','کارمند امداد','کارمند شرکت'])->nullable();
+            $table->enum('user_type',['مددجو','کارمند امداد','کارمند شرکت','مسئول بانک'])->nullable();
             $table->text('address')->nullable();
             $table->float('distance')->nullable();
             $table->string('mobile')->nullable();

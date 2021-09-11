@@ -51,6 +51,6 @@ class User extends Authenticatable
     }
     public function skill()
     {
-        return $this->hasMany(Skill::class, "executor_id");
+        return $this->hasMany(PlanSkill::class, "executor_id");
     }
 }
