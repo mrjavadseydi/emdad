@@ -2,17 +2,17 @@
 @section('position')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">ایجاد طرح</h1>
+            <h1 class="m-0 text-dark">ایجاد پرونده</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="{{route('panel')}}">خانه</a></li>
                 <li class="breadcrumb-item ">
                     <a href="{{route('plan.index')}}">
-                        طرح ها
+                        پرونده ها
                     </a>
                 </li>
-                <li class="breadcrumb-item active">ایجاد طرح</li>
+                <li class="breadcrumb-item active">ایجاد پرونده</li>
             </ol>
         </div><!-- /.col -->
     </div>
@@ -22,7 +22,7 @@
         <div class="col-md-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title d-inline">ایجاد طرح
+                    <h3 class="card-title d-inline">ایجاد پرونده
                     </h3>
 
                 </div>
@@ -40,111 +40,111 @@
                     <form action="{{route('plan.store')}}" method="post">
                         @csrf
                         <div class="row input-group p-1">
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <label>
-                                    مجری
+                                    نام و نام خانوادگی
                                 </label>
-                                <select class="form-control select2" id="executor" name="executor_id">
-                                    <option value="0">انتخاب کنید</option>
-                                    @foreach($executers as $executer)
-                                        <option value="{{$executer->id}}">
-                                            {{$executer->name . " - " . $executer->national_id}}
-                                        </option>
-                                    @endforeach
+                                <input type="name" name="title" class="form-control" placeholder="علی احمدی "
+                                       value="{{Request()->old('name')??""}}">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label>
+                                    متولد
+                                </label>
+                                <input type="number" min="1350" max="1400" name="birth" class="form-control "
+                                       placeholder="۱۳۶۷" value="{{Request()->old('birth')??""}}">
+                            </div>
+                            <div class="col-md-4">
+                                <label>
+                                    تلفن همراه
+                                </label>
+                                <input type="number"  name="mobile" class="form-control "
+                                       placeholder="091549515555" value="{{Request()->old('mobile')??""}}">
+                            </div>
+                        </div>
+
+                        <div class="row input-group p-1">
+                            <div class="col-md-6">
+                                <label>
+                                   وضعیت تاهل
+                                </label>
+                                <select class="form-control" name="marriage">
+                                    <option value="False">مجرد</option>
+                                    <option value="True"> متاهل</option>
                                 </select>
-
                             </div>
-
+                            <div class="col-md-6">
+                                <label>
+                                    تعداد عائله
+                                </label>
+                                <input type="number" min="0"  name="family" class="form-control" placeholder="4"
+                                       value="{{Request()->old('family')??""}}">
+                            </div>
 
                         </div>
                         <div class="row input-group p-1">
-
-
                             <div class="col-md-6">
                                 <label>
-                                    عنوان طرح
+                                    مدرک تحصیلی
                                 </label>
-                                <input type="text" name="title" class="form-control" placeholder="تاسیس ارایشگاه"
-                                       value="{{Request()->old('title')??""}}">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label>
-                                    نوع تسهیلات
-                                </label>
-                                <input type="text" name="type" class="form-control "
-                                       placeholder="نوع تسهیلات" value="{{Request()->old('type')??""}}">
-                            </div>
-                        </div>
-
-                        <div class="row input-group p-1">
-                            <div class="col-md-6">
-
-                                <label>
-                                    گروه فعالیت
-                                </label>
-                                <select class="form-control" name="group">
-                                    <option>۱</option>
-                                    <option>۲</option>
-                                    <option>۳</option>
-                                    <option>۴</option>
-                                    <option>۵</option>
+                                <select class="form-control" name="degree">
+                                    <option >بدون مدرک</option>
+                                    <option >کاردانی</option>
+                                    <option > کارشناسی</option>
+                                    <option > کارشناسی ارشد</option>
+                                    <option > دکتری</option>
                                 </select>
-
-
                             </div>
                             <div class="col-md-6">
                                 <label>
-                                    منبع اعتبار
+                                   نوع حمایت
                                 </label>
-                                <input type="text" name="source" class="form-control" placeholder="منبع اعتبار"
-                                       value="{{Request()->old('source')??""}}">
+                                <select class="form-control" name="support_type">
+                                    <option >1</option>
+                                    <option >2</option>
+                                    <option > 3</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="row input-group p-1">
-                            <div class="col-md-6">
-                                <label>
-                                    بانک عامل
-                                </label>
+                        <div class=" mt-2">
 
-                                <input type="text" name="bank" class="form-control" placeholder="بانک عامل"
-                                       value="{{Request()->old('bank')??""}}">
-                            </div>
-                            <div class="col-md-6">
-                                <label>
-                                    اشتغال
-                                </label>
-                                <input type="number" name="employment" class="form-control" placeholder="12"
-                                       value="{{Request()->old('employment')??""}}">
-                            </div>
-                        </div>
-                        <div class="row input-group p-1">
-                            <div class="col-md-4">
-                                <label>
-                                    تاریخ ثبت
-                                </label>
+                            <label class="p-1 d-block">
+                                ادرس:
+                            </label>
+                            <div class="col-12 ">
+                                <textarea name="address"
+                                          class="form-control p-0 w-99">{{Request()->old('address')??""}}</textarea>
 
-                                <input type="text" name="date" class="form-control normal-example" placeholder="*******"
-                                       value="{{Request()->old('date')}}">
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    کد طرح
-                                </label>
-                                <input type="number" name="code" class="form-control" placeholder="123444"
-                                       value="{{Request()->old('code')}}">
-                            </div>
-                            <div class="col-md-4">
-                                <label>
-                                    فضا
-                                </label>
-                                <input type="text" name="space" class="form-control" placeholder="31123"
-                                       value="{{Request()->old('space')}}">
                             </div>
                         </div>
+{{--                        <div class="row input-group p-1">--}}
+{{--                            <div class="col-md-4">--}}
+{{--                                <label>--}}
+{{--                                    تاریخ ثبت--}}
+{{--                                </label>--}}
+
+{{--                                <input type="text" name="date" class="form-control normal-example" placeholder="*******"--}}
+{{--                                       value="{{Request()->old('date')}}">--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-4">--}}
+{{--                                <label>--}}
+{{--                                    کد پرونده--}}
+{{--                                </label>--}}
+{{--                                <input type="number" name="code" class="form-control" placeholder="123444"--}}
+{{--                                       value="{{Request()->old('code')}}">--}}
+{{--                            </div>--}}
+{{--                            <div class="col-md-4">--}}
+{{--                                <label>--}}
+{{--                                    فضا--}}
+{{--                                </label>--}}
+{{--                                <input type="text" name="space" class="form-control" placeholder="31123"--}}
+{{--                                       value="{{Request()->old('space')}}">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 {{--                        <hr>--}}
 {{--                        <span>--}}
-{{--                            سرمایه طرح--}}
+{{--                            سرمایه پرونده--}}
 {{--                        </span>--}}
 {{--                        <div class=" mt-2">--}}
 
@@ -192,7 +192,7 @@
                         <div id="place1"></div>
                         <hr>
                         <span>
-                           شناسه رهگیری مستندات طرح
+                           شناسه رهگیری مستندات پرونده
                         </span>
                         <div id="place2"></div>
 
