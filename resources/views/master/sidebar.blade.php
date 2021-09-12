@@ -66,7 +66,7 @@
         </li>
         <li class="nav-item has-treeview">
             <a  href="#"
-                class="nav-link {{ request()->is('panel/office') ? 'active':''   }} ">
+                class="nav-link {{ request()->is('panel/bank') ? 'active':''   }} ">
                 <i class="nav-icon fa fa-money "></i>
                 <p>بانک ها
                     <i class="fa fa-angle-left right"></i>
@@ -74,13 +74,13 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
                 <li class="nav-item">
-                    <a href="{{route('office.create')}}" class="nav-link">
+                    <a href="{{route('bank.create')}}" class="nav-link">
                         <i class="fa fa-circle-o nav-icon"></i>
                         <p>ایجاد بانک</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('office.index')}}" class="nav-link">
+                    <a href="{{route('bank.index')}}" class="nav-link">
                         <i class="fa fa-circle-o nav-icon"></i>
                         <p>لیست بانک ها</p>
                     </a>
@@ -112,7 +112,16 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item has-treeview">
+            <a  href="{{route('report.index')}}"
 
+                class="nav-link {{ request()->is('panel/report') ? 'active':''   }} ">
+                <i class="nav-icon fa fa-bar-chart "></i>
+                <p>گزارشات
+
+                </p>
+            </a>
+        </li>
     </ul>
 
 </nav>
