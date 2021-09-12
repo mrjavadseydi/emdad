@@ -2,12 +2,12 @@
 @section('position')
     <div class="row mb-2">
         <div class="col-sm-6">
-            <h1 class="m-0 text-dark">کاربران</h1>
+            <h1 class="m-0 text-dark">بانک ها</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
             <ol class="breadcrumb float-sm-left">
                 <li class="breadcrumb-item"><a href="{{route('panel')}}">خانه</a></li>
-                <li class="breadcrumb-item active">کاربران </li>
+                <li class="breadcrumb-item active">بانک ها</li>
             </ol>
         </div><!-- /.col -->
     </div>
@@ -17,10 +17,10 @@
         <div class="col-md-12">
             <div class="card card-primary card-outline">
                 <div class="card-header">
-                    <h3 class="card-title d-inline">لیست کاربران
+                    <h3 class="card-title d-inline">لیست بانک ها
                     </h3>
-                    <a href="{{route('users.create')}}" class="btn btn-sm btn-primary d-inlie" style="float: left">
-                        ایجاد کاربر جدید
+                    <a href="{{route('bank.create')}}" class="btn btn-sm btn-primary d-inlie" style="float: left">
+                        ایجاد بانک جدید
                     </a>
                 </div>
                 <!-- /.card-header -->
@@ -29,50 +29,48 @@
                         <thead>
                         <tr>
                             <th style="width: 10px">#</th>
-                            <th>نام  </th>
-                            <th>نام پدر</th>
-                            <th>کدملی</th>
-                            <th>نوع کاربر</th>
-                            <th>موبایل</th>
-                            <th>تولد</th>
-                            <th>اداره</th>
+                            <th>نام </th>
+                            <th>ادرس</th>
+                            <th>تلفن تماس</th>
+                            <th>استان</th>
+                            <th>شهرستان</th>
+                            <th>شهر</th>
                             <th>عملیات</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($users as $user)
+                        @foreach($banks as $bank)
                             <tr>
                                 <td>{{$loop->iteration}}.</td>
 
-                                <td>{{$user->name}}</td>
+                                <td>{{$bank->title}}</td>
                                 <td>
-                                    {{$user->fathername}}
+                                    {{mb_substr($bank->address,0,50)."..."}}
                                 </td>
                                 <td>
-                                    {{$user->national_id}}
+                                    {{$bank->phone}}
                                 </td>
                                 <td>
-                                    {{$user->user_type}}
+                                    {{\App\Models\Province::whereId(\App\Models\State::whereId($bank->state_id)->first()->id)->first()->name}}
                                 </td>
                                 <td>
-                                    {{$user->mobile}}
+                                    {{\App\Models\State::whereId($bank->state_id)->first()->name}}
                                 </td>
                                 <td>
-                                    {{$user->birth}}
-                                </td>
-                                <td>
-                                    @if($office =  $user->office)
-                                        {{$user->office->office->name}}
-                                    @else
-                                        اداره ای ثبت نشده
-                                    @endif
+                                    {{\App\Models\City::whereId($bank->city_id)->first()->name}}
                                 </td>
                                 <td>
 
-{{--                                    <a class="btn btn-sm btn-primary" href="{{route('users.show',$user->id)}}">--}}
-{{--                                        <i class="fa fa-eye"></i>--}}
+                                    <a class="btn btn-sm btn-primary" href="{{route('bank.show',$bank->id)}}">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+{{--                                    <a class="btn btn-sm btn-success" href="{{route('bank.users',$bank->id)}}">--}}
+{{--                                        <i class="fa fa-user"></i>--}}
 {{--                                    </a>--}}
-                                    <button type="button" class="btn btn-sm btn-danger trashbtn" data-id="{{$user->id}}">
+                                    <a class="btn btn-sm btn-info" href="{{route('bank.edit',$bank->id)}}">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-sm btn-danger trashbtn" data-id="{{$bank->id}}">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </td>
@@ -83,23 +81,15 @@
                         <tr>
                             <th></th>
                             <th class="filter">
-                                <input id="title" class="form-control" type="text" placeholder="نام و نام خانوادگی">
+                                <input id="title" class="form-control" type="text" placeholder="نام ">
                             </th>
-                            <th><input id="title" class="form-control" type="text" placeholder="نام پدر"></th>
-                            <th><input id="title" class="form-control" type="text" placeholder="کد ملی"></th>
-                            <th>
-                                <select class="form-control">
-                                    <option></option>
-                                    <option>مددجو</option>
-                                    <option>کارمند امداد</option>
-                                    <option>کارمند شرکت</option>
-                                </select>
-                            </th>
-                            <th><input id="title" class="form-control" type="text" placeholder="تلفن همراه"></th>
+                            <th><input id="title" class="form-control" type="text" placeholder="ادرس"></th>
+                            <th><input id="title" class="form-control" type="text" placeholder="تلفن"></th>
 
-                            <th><input id="title" class="form-control" type="text" placeholder="تولد"></th>
+                            <th><input id="title" class="form-control" type="text" placeholder="استان"></th>
 
-                            <th><input id="title" class="form-control" type="text" placeholder="اداره"></th>
+                            <th><input id="title" class="form-control" type="text" placeholder="شهرستان"></th>
+                            <th><input id="title" class="form-control" type="text" placeholder="شهر"></th>
 
                             <th class="">
                             </th>
@@ -198,7 +188,7 @@
                     {
                         extend: 'print',
                         text: '<span> چاپ</span>',
-                        title: 'لیست کاربر ها',
+                        title: 'لیست بانک ها ها',
                         customize: function (win) {
                             $(win.document.body)
                                 .css('direction', 'rtl')
@@ -259,7 +249,7 @@
                 if (result.value) {
                     $.ajax({
                         type: "POST",
-                        url: "{{route('users.index')}}/"+id,
+                        url: "{{route('bank.index')}}/"+id,
                         data: {id: id, _token: _token,_method : "delete"},
                         success: function (data) {
                             Swal.fire({

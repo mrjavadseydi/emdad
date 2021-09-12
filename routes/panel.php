@@ -4,7 +4,10 @@ Route::resource("users", \App\Http\Controllers\UserController::class);
 Route::resource("office", \App\Http\Controllers\OfficeController::class);
 Route::resource("bank", \App\Http\Controllers\BankController::class);
 Route::resource("plan", \App\Http\Controllers\PlanController::class);
-
+Route::get("bank/users/{id}", [
+    \App\Http\Controllers\BankController::class,
+    "users",
+])->name("bank.users");
 Route::get("office/users/{id}", [
     \App\Http\Controllers\OfficeController::class,
     "showOfficeUsers",
